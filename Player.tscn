@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqyrobfgejs2k"]
+
+[ext_resource type="Script" path="res://Movement.cs" id="1_1pgfc"]
+[ext_resource type="Script" path="res://PlayerLook.cs" id="2_657tq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_plmxj"]
+
+[node name="Player" type="Node"]
+
+[node name="Movement" type="CharacterBody3D" parent="." node_paths=PackedStringArray("playerLook", "jumpSound", "landSound", "Head", "speedLabel", "wishDirLabel", "TopSpeedLabel", "FrameRateLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+wall_min_slide_angle = 0.785398
+floor_stop_on_slope = false
+floor_snap_length = 0.01
+script = ExtResource("1_1pgfc")
+playerLook = NodePath("../PlayerLook")
+jumpSound = NodePath("jumpSound")
+landSound = NodePath("landSound")
+Head = NodePath("Head")
+speedLabel = NodePath("../SpeedLabel")
+wishDirLabel = NodePath("../WishDirLabel")
+TopSpeedLabel = NodePath("../TopSpeedLabel")
+FrameRateLabel = NodePath("../FrameRateLabel")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Movement"]
+shape = SubResource("CapsuleShape3D_plmxj")
+
+[node name="Head" type="Marker3D" parent="Movement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="jumpSound" type="AudioStreamPlayer" parent="Movement"]
+
+[node name="landSound" type="AudioStreamPlayer" parent="Movement"]
+
+[node name="PlayerLook" type="Marker3D" parent="." node_paths=PackedStringArray("movement", "cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("2_657tq")
+movement = NodePath("../Movement")
+cam = NodePath("Camera3d")
+
+[node name="Camera3d" type="Camera3D" parent="PlayerLook"]
+
+[node name="FrameRateLabel" type="Label" parent="."]
+offset_right = 62.0
+offset_bottom = 26.0
+text = "Text"
+
+[node name="SpeedLabel" type="Label" parent="."]
+offset_top = 26.0
+offset_right = 62.0
+offset_bottom = 52.0
+text = "Text"
+
+[node name="TopSpeedLabel" type="Label" parent="."]
+offset_top = 52.0
+offset_right = 62.0
+offset_bottom = 78.0
+text = "Text"
+
+[node name="WishDirLabel" type="Label" parent="."]
+offset_top = 78.0
+offset_right = 62.0
+offset_bottom = 104.0
+text = "Text"

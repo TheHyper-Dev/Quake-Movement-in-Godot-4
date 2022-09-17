@@ -14,4 +14,4 @@ Make sure the set your inputs such as "shoot" as Mouse0 and (WASD keys) accordin
 
 Thanks for using this asset!
 if you appreciate it, please consider clicking this link (it's just a redirect to this same page with a url shortener so I can earn some cents)
-http://destyy.com/edZuOd
+ http://destyy.com/edZuOd
